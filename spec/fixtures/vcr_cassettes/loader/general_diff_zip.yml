@@ -1,0 +1,45 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://www.post.japanpost.jp/zipcode/dl/kogaki/zip/add_1811.zip
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Fri, 30 Nov 2018 17:56:20 GMT
+      Server:
+      - nginx
+      Content-Type:
+      - application/zip
+      Content-Length:
+      - '1755'
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Content-Type-Options:
+      - nosniff
+      Last-Modified:
+      - Fri, 30 Nov 2018 07:59:01 GMT
+      Accept-Ranges:
+      - bytes
+      Age:
+      - '0'
+    body:
+      encoding: ASCII-8BIT
+      string: !binary |-
+        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
+    http_version: 
+  recorded_at: Fri, 30 Nov 2018 17:56:20 GMT
+recorded_with: VCR 4.0.0

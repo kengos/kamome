@@ -1,0 +1,3 @@
+--quiet
+lib/**/*.rb
+- README.md LICENCE CHANGELOG.md
