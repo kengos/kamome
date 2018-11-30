@@ -1,5 +1,7 @@
 # Kamome
 
+[![Build Status](https://travis-ci.org/kengos/kamome.svg?branch=master)](https://travis-ci.org/kengos/kamome)
+
 日本郵便の郵便番号データの取得を行うインターフェースです
 
 以下のように block を渡すことで 郵便番号データ の取り込みで任意の実装を行うことができます
