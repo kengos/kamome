@@ -2,7 +2,7 @@ PATH
   remote: .
   specs:
     kamome (0.1.0)
-      rubyzip
+      rubyzip (~> 1.2)
 
 GEM
   remote: https://rubygems.org/
@@ -54,7 +54,6 @@ GEM
       addressable (>= 2.3.6)
       crack (>= 0.3.2)
       hashdiff
-    yard (0.9.16)
 
 PLATFORMS
   ruby
@@ -64,11 +63,10 @@ DEPENDENCIES
   kamome!
   rake (~> 10.0)
   rspec (~> 3.0)
-  rubocop
-  rubocop-rspec
-  vcr
-  webmock
-  yard
+  rubocop (~> 0.60)
+  rubocop-rspec (~> 1.30)
+  vcr (~> 4.0)
+  webmock (~> 3.4)
 
 BUNDLED WITH
    1.17.1
