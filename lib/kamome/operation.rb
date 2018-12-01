@@ -75,5 +75,9 @@ module Kamome
     def genre_jigyosho?
       genre == GENRE_JIGYOSHO
     end
+
+    def ==(other)
+      other.class == self.class && other.type == type && other.genre == genre && other.urls == urls
+    end
   end
 end

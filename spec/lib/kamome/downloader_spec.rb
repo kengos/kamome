@@ -58,5 +58,26 @@ RSpec.describe Kamome::Downloader do
         expect { run }.to raise_error Kamome::DownloadError, 'Net::ReadTimeout: Net::ReadTimeout'
       end
     end
+
+    context 'when download content does not zipfile' do
+      let(:url) { 'http://example.com/' }
+      let(:cassette_name) { ::File.join('downloader', 'not_zipfile') }
+
+      it 'raise Kamome::DownloadError' do
+        message = 'Zip::Error: Zip end of central directory signature not found'
+        expect { run }.to raise_error Kamome::DownloadError, message
+      end
+    end
+  end
+
+  describe '#download_filename' do
+    subject { downloader.send(:download_filename) }
+
+    before do
+      allow(SecureRandom).to receive(:hex).with(3).and_return('a' * 6)
+      allow(Time).to receive(:now).and_return(Time.local(2018, 11, 30, 20, 59, 30))
+    end
+
+    it { is_expected.to eq '20181130205930_aaaaaa.zip' }
   end
 end

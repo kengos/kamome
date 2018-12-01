@@ -12,6 +12,15 @@ Kamome.import_general_all do |model, lineno|
 end
 ```
 
+対応CSV
+
+* 全国一括 (全件, 差分)
+* 事業所(全件, 差分)
+
+各CSVは共通のモデルにマッピングされます(type オプションで詳細なモデル or Hashに変更可能)
+
+詳細は [Kamome::Models::Address](https://github.com/kengos/kamome/blob/master/lib/kamome/models/address.rb) を参照してください
+
 ## Installation
 
 Add this line to your application's Gemfile:
@@ -43,7 +52,7 @@ end
 ```rb
 date = Time.local(2018, 11) # 2018/11 更新分の取り込み
 Kamome.import_general_diff(date: date) do |model, lineno|
-  if model.changed?
+  if model.update?
     puts "追加データ: #{model.zipcode} => #{model.prefecture}#{model.city}#{model.town}"
   else
     puts "削除データ: #{model.zipcode} => #{model.prefecture}#{model.city}#{model.town}"
@@ -64,7 +73,7 @@ end
 ```rb
 date = Time.local(2018, 11) # 2018/11 更新分の取り込み
 Kamome.import_jigyosho_diff(date: date) do |model, lineno|
-  if model.changed?
+  if model.update?
     puts "追加データ: #{model.zipcode} => #{model.prefecture}#{model.city}#{model.town}"
   else
     puts "削除データ: #{model.zipcode} => #{model.prefecture}#{model.city}#{model.town}"
@@ -104,6 +113,13 @@ Kamome.import_general_all(type: :detail or Kamome::Operation::TYPE_DETAIL)
 |XXXXX（YYYY階）|XXXXX（YYYY階）|元の値を維持しています|
 |XXXXX（YYYYY）|XXXXX|() の部分が除去されます|
 
+※ 以下のような削除データが発生する可能性があり、 `town` が正確に取得できないことがあります
+
+```
+26106,"600  ","6008093","ｷｮｳﾄﾌ","ｷｮｳﾄｼｼﾓｷﾞｮｳｸ","ﾀｹﾔﾁｮｳ","京都府","京都市下京区","竹屋町（高倉通綾小路下る、高倉通仏光寺上る、堺町通綾小路下",0,0,0,0,2,6
+26106,"600  ","6008093","ｷｮｳﾄﾌ","ｷｮｳﾄｼｼﾓｷﾞｮｳｸ","ﾀｹﾔﾁｮｳ","京都府","京都市下京区","る西入）",0,0,0,0,2,6
+```
+
 #### `Kamome::Models::General#town_kana`
 
 |元データ|変換後|備考|
@@ -125,8 +141,6 @@ Kamome.import_general_all(type: :detail or Kamome::Operation::TYPE_DETAIL)
 * street ... `０丁目０番地`
 
 として設定されます
-
-#### `Kamome::Models::General#town_kana`
 
 ## Development
 

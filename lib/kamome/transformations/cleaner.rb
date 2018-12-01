@@ -10,7 +10,7 @@ module Kamome
         value.sub(TOWN_KAN_SUB_RULE, '')
       end
 
-      TOWN_SUB_RULE = /(（(?!.+階）).+）|以下に掲載がない場合|.+の次に番地がくる場合|.+一円)$/.freeze
+      TOWN_SUB_RULE = /(（(?!.+階）).+|以下に掲載がない場合|.+の次に番地がくる場合|.+一円|)$/.freeze
       def clean_town(value)
         value.sub(TOWN_SUB_RULE, '')
       end

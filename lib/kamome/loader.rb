@@ -2,6 +2,7 @@
 
 require 'kamome/downloader'
 require 'kamome/csv_handler'
+require 'digest'
 
 module Kamome
   class Loader
@@ -9,13 +10,11 @@ module Kamome
       @config = config
     end
 
+    # @return [Array] csv digest
     def call(operation:, &block)
-      csv_handler = build_csv_handler(operation)
-
-      operation.urls.each do |url|
+      operation.urls.map do |url|
         csv_path = download(url)
-        csv_handler.call(csv_path, &block)
-        csv_path.delete
+        call_csv_handler(operation, csv_path, &block)
       end
     end
 
@@ -29,8 +28,11 @@ module Kamome
       @downloader ||= ::Kamome::Downloader.new(@config)
     end
 
-    def build_csv_handler(operation)
-      ::Kamome::CsvHandler.new(operation)
+    def call_csv_handler(operation, csv_path, &block)
+      ::Kamome::CsvHandler.new(operation).call(csv_path, &block)
+      ::Digest::SHA256.file(csv_path).to_s
+    ensure
+      csv_path.delete if @config.cleanup
     end
   end
 end

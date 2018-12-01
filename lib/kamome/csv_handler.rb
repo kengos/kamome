@@ -13,7 +13,7 @@ module Kamome
     def call(csv_path)
       ::CSV.foreach(csv_path) do |row|
         obj = transform(row)
-        yield(obj, $INPUT_LINE_NUMBER)
+        yield(obj, $INPUT_LINE_NUMBER) if block_given?
       end
     end
 

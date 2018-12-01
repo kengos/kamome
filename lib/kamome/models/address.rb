@@ -51,12 +51,18 @@ module Kamome
       #   @return [Integer]
       attr_accessor :state
 
+      STATE_NOT_CHANGE = 0
+      STATE_UPDATE = 1
+      STATE_DELETE = 2
+
+      # @params [Hash] model attributes
       def initialize(params = {})
         params.each do |key, value|
           public_send("#{key}=", value)
         end
       end
 
+      # @return [Hash] model attributes
       def attributes
         {
           code: code,
@@ -71,12 +77,22 @@ module Kamome
         }
       end
 
-      def changed?
-        state == 1
+      # Returns true when state is 1 or 2
+      # @return [Boolean]
+      def change?
+        updated? || deleted?
       end
 
+      # Returns true when state is 1
+      # @return [Boolean]
+      def update?
+        state == STATE_UPDATE
+      end
+
+      # Returns true when state is 2
+      # @return [Boolean]
       def delete?
-        state == 2
+        state == STATE_DELETE
       end
     end
   end

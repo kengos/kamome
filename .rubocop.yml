@@ -23,3 +23,6 @@ Metrics/LineLength:
 
 RSpec/NestedGroups:
   Max: 4
+
+RSpec/MessageSpies:
+  EnforcedStyle: receive

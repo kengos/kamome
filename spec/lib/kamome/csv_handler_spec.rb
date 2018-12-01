@@ -63,4 +63,35 @@ RSpec.describe Kamome::CsvHandler do
       it { expect(results[0]).to be_is_a ::Kamome::Models::Jigyosho }
     end
   end
+
+  describe '#transform' do
+    subject(:transform) { csv_handler.send(:transform, []) }
+
+    context 'when operation type: Kamome::Operation::TYPE_DEFAULT' do
+      let(:operation) { Kamome::Operation.general_all(type: Kamome::Operation::TYPE_DEFAULT) }
+
+      it 'call generate_model method' do
+        expect(csv_handler.send(:transformer)).to receive(:generate_model)
+        transform
+      end
+    end
+
+    context 'when operation type: Kamome::Operation::TYPE_HASH' do
+      let(:operation) { Kamome::Operation.general_all(type: Kamome::Operation::TYPE_HASH) }
+
+      it 'call generate_hash method' do
+        expect(csv_handler.send(:transformer)).to receive(:generate_hash)
+        transform
+      end
+    end
+
+    context 'when operation type: Kamome::Operation::TYPE_DETAIL' do
+      let(:operation) { Kamome::Operation.general_all(type: Kamome::Operation::TYPE_DETAIL) }
+
+      it 'call generate_detail_model method' do
+        expect(csv_handler.send(:transformer)).to receive(:generate_detail_model)
+        transform
+      end
+    end
+  end
 end

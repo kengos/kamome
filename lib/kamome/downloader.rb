@@ -26,7 +26,7 @@ module Kamome
 
     # @return [Pathname] downloaded file
     def download(url)
-      dest = @config.working_directory.join(SecureRandom.hex(8) + '.zip')
+      dest = @config.working_directory.join(download_filename)
       ::FileUtils.mkdir_p(dest.dirname)
 
       ::OpenURI.open_uri(url, @config.open_uri_options) do |response|
@@ -35,11 +35,13 @@ module Kamome
       dest
     end
 
-    def unpack(src)
-      # convert encoding Shift_JIS to UTF-8 (and half width Katakana to full width Katakana)
-      content = ::NKF.nkf('-w -Lu', take_csv_entry(src).get_input_stream.read)
+    def download_filename
+      ::Time.now.strftime("%Y%m%d%H%M%S_#{SecureRandom.hex(3)}.zip")
+    end
 
+    def unpack(src)
       dest = src.sub('.zip', '.csv')
+      content = convert_encoding(take_csv_entry(src))
       ::File.binwrite(dest, content)
       dest
     end
@@ -48,9 +50,14 @@ module Kamome
       entry = ::Zip::File.open(src) do |zipfile|
         zipfile.select { |o| o.name =~ /.*\.csv/i }.first
       end
-      raise ::Kamome::DownloadError, 'Not found csvfile in zipfile' if entry.nil?
+      raise 'Not found csvfile in zipfile' if entry.nil?
 
-      entry
+      entry.get_input_stream.read
+    end
+
+    # convert encoding Shift_JIS to UTF-8 (and half width Katakana to full width Katakana)
+    def convert_encoding(content)
+      ::NKF.nkf('-w -Lu', content)
     end
   end
 end

@@ -31,6 +31,12 @@ RSpec.describe Kamome::Transformations::Cleaner do
       it { is_expected.to eq 'あいうえお' }
     end
 
+    context 'when include .+（次のビルを除く）' do
+      let(:value) { 'あいうえお（かきくけこ' }
+
+      it { is_expected.to eq 'あいうえお' }
+    end
+
     context 'when include (.+階)' do
       let(:value) { 'あいうえお（１階）' }
 

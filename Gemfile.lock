@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    kamome (0.1.0)
+    kamome (0.8.0)
       rubyzip (~> 1.2)
 
 GEM
