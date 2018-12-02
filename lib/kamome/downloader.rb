@@ -19,7 +19,7 @@ module Kamome
       zip_path.delete
       csv_path
     rescue StandardError => e
-      raise Kamome::DownloadError, "#{e.class}: #{e.message}"
+      raise Kamome::DownloadError, "#{url}, #{e.class}: #{e.message}"
     end
 
     private

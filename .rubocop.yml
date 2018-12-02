@@ -26,3 +26,6 @@ RSpec/NestedGroups:
 
 RSpec/MessageSpies:
   EnforcedStyle: receive
+
+RSpec/MultipleExpectations:
+  Enabled: false

@@ -1,0 +1,171 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://www.post.japanpost.jp/zipcode/dl/kogaki/zip/add_1811.zip
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Sun, 02 Dec 2018 06:38:03 GMT
+      Server:
+      - nginx
+      Content-Type:
+      - application/zip
+      Content-Length:
+      - '1755'
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Content-Type-Options:
+      - nosniff
+      Last-Modified:
+      - Fri, 30 Nov 2018 07:59:01 GMT
+      Accept-Ranges:
+      - bytes
+      Age:
+      - '0'
+    body:
+      encoding: ASCII-8BIT
+      string: !binary |-
+        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
+    http_version: 
+  recorded_at: Sun, 02 Dec 2018 06:38:04 GMT
+- request:
+    method: get
+    uri: https://www.post.japanpost.jp/zipcode/dl/kogaki/zip/del_1811.zip
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Sun, 02 Dec 2018 06:38:03 GMT
+      Server:
+      - nginx
+      Content-Type:
+      - application/zip
+      Content-Length:
+      - '1731'
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Content-Type-Options:
+      - nosniff
+      Last-Modified:
+      - Fri, 30 Nov 2018 07:59:01 GMT
+      Accept-Ranges:
+      - bytes
+      Age:
+      - '2158'
+    body:
+      encoding: ASCII-8BIT
+      string: !binary |-
+        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
+    http_version: 
+  recorded_at: Sun, 02 Dec 2018 06:38:04 GMT
+- request:
+    method: get
+    uri: https://www.post.japanpost.jp/zipcode/dl/jigyosyo/zip/jadd1811.zip
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Sun, 02 Dec 2018 06:38:03 GMT
+      Server:
+      - nginx
+      Content-Type:
+      - application/zip
+      Content-Length:
+      - '2276'
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Content-Type-Options:
+      - nosniff
+      Last-Modified:
+      - Fri, 30 Nov 2018 07:59:01 GMT
+      Accept-Ranges:
+      - bytes
+      Age:
+      - '0'
+    body:
+      encoding: ASCII-8BIT
+      string: !binary |-
+        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
+    http_version: 
+  recorded_at: Sun, 02 Dec 2018 06:38:04 GMT
+- request:
+    method: get
+    uri: https://www.post.japanpost.jp/zipcode/dl/jigyosyo/zip/jdel1811.zip
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Sun, 02 Dec 2018 06:38:04 GMT
+      Server:
+      - nginx
+      Content-Type:
+      - application/zip
+      Content-Length:
+      - '1816'
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Content-Type-Options:
+      - nosniff
+      Last-Modified:
+      - Fri, 30 Nov 2018 07:59:01 GMT
+      Accept-Ranges:
+      - bytes
+      Age:
+      - '0'
+    body:
+      encoding: ASCII-8BIT
+      string: !binary |-
+        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
+    http_version: 
+  recorded_at: Sun, 02 Dec 2018 06:38:04 GMT
+recorded_with: VCR 4.0.0

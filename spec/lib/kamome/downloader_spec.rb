@@ -45,7 +45,7 @@ RSpec.describe Kamome::Downloader do
       let(:cassette_name) { ::File.join('downloader', 'content_404') }
 
       it 'raise Kamome::DownloadError' do
-        expect { run }.to raise_error Kamome::DownloadError, 'OpenURI::HTTPError: 404 Not Found'
+        expect { run }.to raise_error Kamome::DownloadError, "#{url}, OpenURI::HTTPError: 404 Not Found"
       end
     end
 
@@ -55,7 +55,7 @@ RSpec.describe Kamome::Downloader do
 
       it 'raise Kamome::DownloadError' do
         config.open_uri_options = { read_timeout: 0 }
-        expect { run }.to raise_error Kamome::DownloadError, 'Net::ReadTimeout: Net::ReadTimeout'
+        expect { run }.to raise_error Kamome::DownloadError, "#{url}, Net::ReadTimeout: Net::ReadTimeout"
       end
     end
 
@@ -64,7 +64,7 @@ RSpec.describe Kamome::Downloader do
       let(:cassette_name) { ::File.join('downloader', 'not_zipfile') }
 
       it 'raise Kamome::DownloadError' do
-        message = 'Zip::Error: Zip end of central directory signature not found'
+        message = "#{url}, Zip::Error: Zip end of central directory signature not found"
         expect { run }.to raise_error Kamome::DownloadError, message
       end
     end

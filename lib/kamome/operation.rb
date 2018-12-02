@@ -36,7 +36,7 @@ module Kamome
 
       private
 
-      YYMM_FORMAT = /\d{2}(0[1-9]|1[0-2])/.freeze
+      YYMM_FORMAT = /\A\d{2}(0[1-9]|1[0-2])\z/.freeze
       def format_yymm(date)
         yymm = date.respond_to?(:strftime) ? date.strftime('%y%m') : date.to_s
         return yymm if yymm =~ YYMM_FORMAT

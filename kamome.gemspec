@@ -44,4 +44,5 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency 'rubocop', '~> 0.60'
   spec.add_development_dependency 'rubocop-rspec', '~> 1.30'
   spec.add_dependency 'rubyzip', '~> 1.2'
+  spec.add_dependency 'thor', '~> 0.19'
 end

@@ -61,14 +61,14 @@ module Kamome
       loader.call(operation: operation, &block)
     end
 
+    def loader
+      Kamome::Loader.new(config: configuration)
+    end
+
     private
 
     def configuration
       @configuration ||= Kamome::Configuration.new
-    end
-
-    def loader
-      Kamome::Loader.new(config: configuration)
     end
   end
 end
