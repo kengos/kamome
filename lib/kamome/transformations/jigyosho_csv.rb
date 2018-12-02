@@ -69,7 +69,8 @@ module Kamome
           street: attributes[:street],
           company_name: attributes[:company_name],
           post_office_box: attributes[:post_office_box],
-          state: convert_state(attributes[:state])
+          state: convert_state(attributes[:state]),
+          ambiguous_town: false
         }
       end
 

@@ -58,7 +58,8 @@ RSpec.describe Kamome::Transformations::GeneralCsv do
         street: '',
         company_name: '',
         post_office_box: '',
-        state: 0
+        state: 0,
+        ambiguous_town: false
       }
     end
 

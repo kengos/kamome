@@ -54,7 +54,8 @@ RSpec.describe Kamome::Transformations::JigyoshoCsv do
         street: '０丁目０番地',
         post_office_box: 'ああああ郵便局私書箱第０００号',
         zipcode: '0650000',
-        state: 2
+        state: 2,
+        ambiguous_town: false
       }
     end
 

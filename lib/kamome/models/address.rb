@@ -51,6 +51,12 @@ module Kamome
       #   @return [Integer]
       attr_accessor :state
 
+      # @!attribute [rw] ambiguous_town
+      #   一町域が二以上の郵便番号で表される場合 true
+      #   genre: :general のみ
+      #   @return [Boolean]
+      attr_accessor :ambiguous_town
+
       STATE_NOT_CHANGE = 0
       STATE_UPDATE = 1
       STATE_DELETE = 2
@@ -73,7 +79,8 @@ module Kamome
           street: street,
           company_name: company_name,
           post_office_box: post_office_box,
-          state: state
+          state: state,
+          ambiguous_town: ambiguous_town
         }
       end
 

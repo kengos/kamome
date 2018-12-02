@@ -13,7 +13,7 @@ RSpec.describe Kamome::Loader do
   describe '#call' do
     subject(:do_call) do
       ::VCR.use_cassette(cassette_name) do
-        loader.call(operation: operation)
+        loader.call(operation: operation) { throw :break }
       end
     end
 
@@ -36,7 +36,7 @@ RSpec.describe Kamome::Loader do
   end
 
   describe '#call_csv_handler' do
-    subject(:call_csv_handler) { loader.send(:call_csv_handler, operation, csv_path) }
+    subject(:call_csv_handler) { loader.send(:call_csv_handler, operation, csv_path) { throw :break } }
 
     before do
       FileUtils.cp sample_file_path, csv_path

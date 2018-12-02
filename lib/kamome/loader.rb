@@ -10,6 +10,9 @@ module Kamome
       @config = config
     end
 
+    # @params [Operation] Kamome::Operation
+    # @yield [model, lineno] Any logic you want to execute
+    #    Don't pass `-> { break }`, use `-> { throw :break }
     # @return [Array] csv digest
     def call(operation:, &block)
       operation.urls.map do |url|
@@ -29,7 +32,9 @@ module Kamome
     end
 
     def call_csv_handler(operation, csv_path, &block)
-      ::Kamome::CsvHandler.new(operation).call(csv_path, &block)
+      catch(:break) do
+        ::Kamome::CsvHandler.new(operation).call(csv_path, &block)
+      end
       ::Digest::SHA256.file(csv_path).to_s
     ensure
       csv_path.delete if @config.cleanup

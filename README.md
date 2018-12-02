@@ -17,7 +17,7 @@ end
 * 全国一括 (全件, 差分)
 * 事業所(全件, 差分)
 
-各CSVは共通のモデルにマッピングされます(type オプションで詳細なモデル or Hashに変更可能)
+各CSVは共通のモデルにマッピングされます(type オプションで詳細なモデルに変更可能)
 
 詳細は [Kamome::Models::Address](https://github.com/kengos/kamome/blob/master/lib/kamome/models/address.rb) を参照してください
 
@@ -84,12 +84,6 @@ end
 ## FAQ
 
 ### `Kamome.import_xxx` の model の型を変換したい
-
-#### Hash にする場合
-
-```rb
-Kamome.import_general_all(type: :hash or Kamome::Operation::TYPE_HASH)
-```
 
 #### DetailModel にする場合
 

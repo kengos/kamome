@@ -11,9 +11,13 @@ module Kamome
     end
 
     def call(csv_path)
+      prev = nil
       ::CSV.foreach(csv_path) do |row|
         obj = transform(row)
-        yield(obj, $INPUT_LINE_NUMBER) if block_given?
+        next if skip?(prev, obj)
+
+        yield(obj, $INPUT_LINE_NUMBER)
+        prev = obj
       end
     end
 
@@ -24,10 +28,7 @@ module Kamome
     end
 
     def transformed_method
-      return :generate_hash if @operation.type_hash?
-      return :generate_detail_model if @operation.type_detail?
-
-      :generate_model
+      @operation.type_detail? ? :generate_detail_model : :generate_model
     end
 
     def transformer
@@ -40,6 +41,13 @@ module Kamome
 
     def general_transformer
       ::Kamome::Transformations::GeneralCsv.new
+    end
+
+    def skip?(previous, current)
+      return false unless previous.respond_to?(:ambiguous_town)
+      return false unless previous.ambiguous_town
+
+      previous.zipcode == current.zipcode
     end
   end
 end

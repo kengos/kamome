@@ -66,7 +66,8 @@ module Kamome
           street: '',
           company_name: '',
           post_office_box: '',
-          state: attributes[:state]
+          state: attributes[:state],
+          ambiguous_town: attributes[:ambiguous_town]
         }
       end
     end

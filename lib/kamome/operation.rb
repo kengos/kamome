@@ -2,7 +2,6 @@
 
 module Kamome
   class Operation
-    TYPE_HASH = :hash
     TYPE_DETAIL = :detail
     TYPE_DEFAULT = :default
 
@@ -54,10 +53,6 @@ module Kamome
       @type = type
       @genre = genre
       @urls = urls
-    end
-
-    def type_hash?
-      type == TYPE_HASH
     end
 
     def type_detail?
