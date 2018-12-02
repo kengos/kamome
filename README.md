@@ -81,6 +81,22 @@ Kamome.import_jigyosho_diff(date: date) do |model, lineno|
 end
 ```
 
+## Cli commands
+
+```bash
+$ kamome generate_csv all.csv
+$ kamome generate_diff_csv diff.csv --date=1810
+$ kamome generate_json all.json
+$ kamome generate_diff_json diff.json
+```
+
+For more informations:
+
+```bash
+$ kamome -h
+$ kamome help [command]
+```
+
 ## FAQ
 
 ### `Kamome.import_xxx` の model の型を変換したい
